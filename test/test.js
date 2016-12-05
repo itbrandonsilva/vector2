@@ -1,3 +1,5 @@
+"use strict";
+
 const Vector2 = require('../dist/Vector2.js').default;
 const chai = require('chai');
 chai.should();
