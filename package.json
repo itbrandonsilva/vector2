@@ -2,17 +2,19 @@
   "name": "vector2",
   "version": "1.0.0",
   "description": "Vector2 class packed with various utilities.",
-  "main": "dist/Vector2.js",
+  "main": "build/Vector2.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha",
-    "build": "npm install; tsc; typedoc --target ES6 --theme ./node_modules/typedoc-default-themes/bin/default --readme none --name \"Vector2 Documentation\" --mode file --out ./docs ."
+    "build": "tsc;",
+    "docs": "typedoc --target ES6 --theme ./node_modules/typedoc-default-themes/bin/default --readme none --name \"Vector2 Documentation\" --mode file --out ./docs .; touch ./docs/.nojekyll;",
+    "all": "yarn; npm run build; npm run test; npm run docs;"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.2.0",
-    "typedoc": "^0.5.1",
     "typedoc-default-themes": "0.4.0"
-  }
+  },
+  "typings": "build/Vector2"
 }

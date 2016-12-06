@@ -132,27 +132,29 @@ var Vector2 = (function () {
         return vc.subtract(this);
     };
     /**
-      * Determine if the vector lies with the given rectangle.
+      * Determine if the point lies within the given rectangle.
       */
     Vector2.prototype.inRect = function (topLeft, bottomRight) {
         return ((this.x >= topLeft.x) && (this.x <= bottomRight.x) && (this.y >= topLeft.y) && (this.y <= bottomRight.y));
     };
     /**
-      * Determine if the vector lies within the given triangle.
+      * Determine if the point lies within the given triangle.
       */
     Vector2.prototype.inTriangle = function (v1, v2, v3) {
-        var b1 = this.sign(v1, v2) < 0;
-        var b2 = this.sign(v2, v3) < 0;
-        var b3 = this.sign(v3, v1) < 0;
-        return ((b1 == b2) && (b2 == b3));
+        var sign1 = Vector2.areaTriangle(this, v1, v2) < 0;
+        var sign2 = Vector2.areaTriangle(this, v2, v3) < 0;
+        var sign3 = Vector2.areaTriangle(this, v3, v1) < 0;
+        return ((sign1 == sign2) && (sign2 == sign3));
     };
     Vector2.prototype.centerBetween = function (v2) {
         var v1 = this;
         var center = new Vector2((v1.x + v2.x) / 2, (v1.y + v2.y) / 2);
         return center;
     };
-    Vector2.prototype.sign = function (p2, p3) {
-        var p1 = this;
+    /**
+      * Use the 1/2 determinant method to find the area of a triangle.
+      */
+    Vector2.areaTriangle = function (p1, p2, p3) {
         return (p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y);
     };
     Vector2.prototype.toArray = function () {

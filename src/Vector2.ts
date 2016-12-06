@@ -145,7 +145,7 @@ export default class Vector2 {
     }
 
     cross(v2: Vector2): number {
-        let v1 = this;
+       let v1 = this;
         return v1.x * v2.y - v1.y * v2.x;
     }
 
@@ -155,21 +155,21 @@ export default class Vector2 {
     }
 
     /**
-      * Determine if the vector lies with the given rectangle.
+      * Determine if the point lies within the given rectangle.
       */
     inRect(topLeft: Vector2, bottomRight: Vector2): boolean {
         return ( (this.x >= topLeft.x) && (this.x <= bottomRight.x) && (this.y >= topLeft.y) && (this.y <= bottomRight.y) );
     }
 
     /**
-      * Determine if the vector lies within the given triangle.
+      * Determine if the point lies within the given triangle.
       */
     inTriangle (v1: Vector2, v2: Vector2, v3: Vector2): boolean {
-        let b1 = this.sign(v1, v2) < 0;
-        let b2 = this.sign(v2, v3) < 0;
-        let b3 = this.sign(v3, v1) < 0;
+        let sign1 = Vector2.areaTriangle(this, v1, v2) < 0;
+        let sign2 = Vector2.areaTriangle(this, v2, v3) < 0;
+        let sign3 = Vector2.areaTriangle(this, v3, v1) < 0;
 
-        return ((b1 == b2) && (b2 == b3));
+        return ((sign1 == sign2) && (sign2 == sign3));
     }
 
     centerBetween(v2: Vector2): Vector2 {
@@ -178,8 +178,10 @@ export default class Vector2 {
         return center;
     }
 
-    sign(p2, p3) {
-        let p1 = this;
+    /**
+      * Use the 1/2 determinant method to find the area of a triangle.
+      */
+    static areaTriangle(p1: Vector2, p2: Vector2, p3: Vector2) {
         return (p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y);
     }
 
