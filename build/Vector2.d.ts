@@ -101,4 +101,8 @@ export default class Vector2 {
       * Returns `undefined` if no intersection is found.
       */
     static segmentsIntersection(p: Vector2, p2: Vector2, q: Vector2, q2: Vector2): Vector2;
+    /**
+      * Casts a ray from `v1` towards `v2` in an infinite 2d grid space. Returns an array of grid spaces the ray intersects between `v1` and `v2`.
+      */
+    static castBetween(v1: Vector2, v2: Vector2, width?: number): Vector2[];
 }

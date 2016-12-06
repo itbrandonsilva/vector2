@@ -102,4 +102,49 @@ describe('Vector2', () => {
         a[0].should.be.equal(1);
         a[1].should.be.equal(2);
     });
+    it('can castBetween()', () => {
+        let cells = Vector2.castBetween(new Vector2(0, 0), new Vector2(5, 5));
+        cells.length.should.equal(11);
+
+        let first = cells[0];
+        first.x.should.equal(0);
+        first.y.should.equal(0);
+
+        let last = cells.pop();
+        last.x.should.equal(5);
+        last.y.should.equal(5);
+
+        cells = Vector2.castBetween(new Vector2(1, 1), new Vector2(5, 1));
+        cells.length.should.equal(5);
+
+        first = cells[0];
+        first.x.should.equal(1);
+        first.y.should.equal(1);
+
+        last = cells.pop();
+        last.x.should.equal(5);
+        last.y.should.equal(1);
+
+        cells = Vector2.castBetween(new Vector2(2, 1), new Vector2(2, 8));
+        cells.length.should.equal(8);
+
+        first = cells[0];
+        first.x.should.equal(2);
+        first.y.should.equal(1);
+
+        last = cells.pop();
+        last.x.should.equal(2);
+        last.y.should.equal(8);
+
+        cells = Vector2.castBetween(new Vector2(6, 6), new Vector2(2, 2));
+        cells.length.should.equal(9);
+
+        first = cells[0];
+        first.x.should.equal(6);
+        first.y.should.equal(6);
+
+        last = cells.pop();
+        last.x.should.equal(2);
+        last.y.should.equal(2);
+    });
 });

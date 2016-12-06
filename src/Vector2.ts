@@ -1,3 +1,11 @@
+function frac0(f) {
+    return f % 1;
+}
+
+function frac1(f) {
+    return 1 - f + Math.floor(f);
+}
+
 /**
   * *Keep in mind that Vector2 is **not an immutable class**. It is also assumed that your **positive y axis points down***.
   */
@@ -292,5 +300,53 @@ export default class Vector2 {
             var intersectionPoint = p.clone().add(r.clone().multiply(t));
             return intersectionPoint;
         }
+    }
+
+    /**
+      * Casts a ray from `v1` towards `v2` in an infinite 2d grid space. Returns an array of grid spaces the ray intersects between `v1` and `v2`.
+      */
+    static castBetween(v1: Vector2, v2: Vector2, width: number = 1): Vector2[] {
+        let cellsCrossed: Vector2[] = [];
+
+        v1 = v1.clone().div(width);
+        v2 = v2.clone().div(width);
+
+        let tDeltaX, tMaxX;
+        let dx = Math.sign(v2.x - v1.x);
+        if ( dx !== 0 ) tDeltaX = Math.min(dx / (v2.x - v1.x), 10000000);
+        else tDeltaX = 10000000;
+        if ( dx >= 0 ) tMaxX = tDeltaX * frac1(v1.x);
+        else tMaxX = tDeltaX * frac0(v1.x);
+
+        let tDeltaY, tMaxY;
+        let dy = Math.sign(v2.y - v1.y);
+        if ( dy !== 0 ) tDeltaY = Math.min(dy / (v2.y - v1.y), 10000000);
+        else tDeltaY = 10000000;
+        if ( dy >= 0 ) tMaxY = tDeltaY * frac1(v1.y);
+        else tMaxY = tDeltaY * frac0(v1.y);
+
+        let destX = Math.floor(v2.x);
+        let destY = Math.floor(v2.y);
+
+        let x = v1.x;
+        let y = v1.y;
+        while (true) {
+            let fx = Math.floor(x);
+            let fy = Math.floor(y);
+
+            cellsCrossed.push(new Vector2(fx, fy));
+
+            if (destX === fx && destY === fy) break;
+
+            if (tMaxX < tMaxY) {
+                tMaxX = tMaxX + (tDeltaX);
+                x = x + dx;
+            } else {
+                tMaxY = tMaxY + (tDeltaY);
+                y = y + dy;
+            }
+        }
+
+        return cellsCrossed;
     }
 }
