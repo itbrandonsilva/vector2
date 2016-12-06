@@ -25,18 +25,18 @@ export default class Vector2 {
         return this;
     }
 
-    /*set(v: Vector2): Vector2 {
-        this._v[0] = v.x;
-        this._v[1] = v.y;
-        return this;
-    }*/
-
-    mimic(v: Vector2): Vector2 {
+    /**
+      * Read data from another vector into this vector.
+      */
+    read(v: Vector2): Vector2 {
         this._v[0] = v.x;
         this._v[1] = v.y;
         return this;
     }
 
+    /**
+      * Create a new vector initialized with the values of this vector.
+      */
     clone(): Vector2 {
         return new Vector2(this._v[0], this._v[1]);
     }
@@ -105,10 +105,6 @@ export default class Vector2 {
 
     normalize(): Vector2 {
         return this.div(this.getLength());
-        //let l = this.getLength();
-        //this._v[0] /= l;
-        //this._v[1] /= l;
-        //return this;
     }
 
     distance(vector: Vector2): number {

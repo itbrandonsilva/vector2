@@ -5,6 +5,19 @@ const chai = require('chai');
 chai.should();
 
 describe('Vector2', () => {
+    it('can read() from another vector', () => {
+        let v1 = new Vector2(1, 1);
+        let v2 = new Vector2(2, 3);
+        v1.read(v2);
+        v1.x.should.equal(2);
+        v2.y.should.equal(3);
+    });
+    it('can clone() into a new vector', () => {
+        let v = new Vector2(2, 3);
+        let cloned = v.clone();
+        cloned.x.should.equal(2);
+        cloned.y.should.equal(3);
+    });
     it('can round()', () => {
         let v = new Vector2(398.883, 103.335).round();
         v.x.should.equal(399);

@@ -7,7 +7,13 @@ export default class Vector2 {
     x: number;
     y: number;
     set(x: number, y: number): Vector2;
-    mimic(v: Vector2): Vector2;
+    /**
+      * Read data from another vector into this vector.
+      */
+    read(v: Vector2): Vector2;
+    /**
+      * Create a new vector initialized with the values of this vector.
+      */
     clone(): Vector2;
     add(vector: Vector2): Vector2;
     addX(x: number): Vector2;

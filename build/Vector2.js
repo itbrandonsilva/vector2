@@ -29,16 +29,17 @@ var Vector2 = (function () {
         this._v[1] = y;
         return this;
     };
-    /*set(v: Vector2): Vector2 {
-        this._v[0] = v.x;
-        this._v[1] = v.y;
-        return this;
-    }*/
-    Vector2.prototype.mimic = function (v) {
+    /**
+      * Read data from another vector into this vector.
+      */
+    Vector2.prototype.read = function (v) {
         this._v[0] = v.x;
         this._v[1] = v.y;
         return this;
     };
+    /**
+      * Create a new vector initialized with the values of this vector.
+      */
     Vector2.prototype.clone = function () {
         return new Vector2(this._v[0], this._v[1]);
     };
@@ -93,10 +94,6 @@ var Vector2 = (function () {
     };
     Vector2.prototype.normalize = function () {
         return this.div(this.getLength());
-        //let l = this.getLength();
-        //this._v[0] /= l;
-        //this._v[1] /= l;
-        //return this;
     };
     Vector2.prototype.distance = function (vector) {
         return vector.clone().subtract(this).getLength();
