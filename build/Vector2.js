@@ -1,6 +1,6 @@
 "use strict";
 /**
-  * *WARNING: All calls that need to modify the host vector will do so **in place***.
+  * *Keep in mind that Vector2 is **not an immutable class**. It is also assumed that your **positive y axis points down***.
   */
 var Vector2 = (function () {
     function Vector2(x, y) {
@@ -38,6 +38,21 @@ var Vector2 = (function () {
         return this;
     };
     /**
+      * Reverse the X and Y values.
+      */
+    Vector2.prototype.reverse = function () {
+        this._v.reverse();
+        return this;
+    };
+    /**
+      * Equivalent to rotating the vector 180 degrees.
+      */
+    Vector2.prototype.flip = function () {
+        this._v[0] = -this._v[0];
+        this._v[1] = -this._v[1];
+        return this;
+    };
+    /**
       * Create a new vector initialized with the values of this vector.
       */
     Vector2.prototype.clone = function () {
@@ -61,6 +76,9 @@ var Vector2 = (function () {
         this._v[1] -= vector._v[1];
         return this;
     };
+    /**
+      * Alias for `subtract()`.
+      */
     Vector2.prototype.sub = function (vector) {
         return this.subtract(vector);
     };
@@ -69,9 +87,15 @@ var Vector2 = (function () {
         this._v[1] *= scale;
         return this;
     };
+    /**
+      * Alias for `multiply()`.
+      */
     Vector2.prototype.mul = function (scale) {
         return this.multiply(scale);
     };
+    /**
+      * Alias for `multiply()`.
+      */
     Vector2.prototype.mult = function (scale) {
         return this.multiply(scale);
     };
@@ -80,11 +104,20 @@ var Vector2 = (function () {
         this._v[1] /= scale;
         return this;
     };
+    /**
+      * Alias for `divide()`.
+      */
     Vector2.prototype.div = function (scale) {
         return this.divide(scale);
     };
-    Vector2.prototype.isEqual = function (vector) {
+    Vector2.prototype.isEqualTo = function (vector) {
         return (this._v[0] == vector._v[0] && this._v[1] == vector._v[1]);
+    };
+    /**
+      * Alias for `isEqualTo()`.
+      */
+    Vector2.prototype.eql = function (vector) {
+        return this.isEqualTo(vector);
     };
     Vector2.prototype.setLength = function (scale) {
         return this.normalize().multiply(scale);
@@ -107,7 +140,7 @@ var Vector2 = (function () {
         return this;
     };
     /**
-      * Rotate the given vector around the origin [ 0, 0 ].
+      * Rotate the given vector around the origin `[0, 0]`.
       */
     Vector2.prototype.rotate = function (degrees, round) {
         round = round || 1;
@@ -119,6 +152,36 @@ var Vector2 = (function () {
         this._v[0] = px;
         this._v[1] = py;
         return this;
+    };
+    /**
+      * Faster than calling `rotate(90)`.
+      */
+    Vector2.prototype.rotate90 = function () {
+        var ox = this._v[0];
+        this._v[0] = -this._v[1];
+        this._v[1] = ox;
+        return this;
+    };
+    /**
+      * Alias to `rotate90`
+      */
+    Vector2.prototype.rotate90C = function () {
+        return this.rotate90();
+    };
+    /**
+      * Same as `rotate90()` but instead rotates counter-clockwise.
+      */
+    Vector2.prototype.rotate90CC = function () {
+        var ox = this._v[0];
+        this._v[0] = this._v[1];
+        this._v[1] = -ox;
+        return this;
+    };
+    /**
+      * Faster than calling `rotate(180)` or `rotate90()` twice.
+      */
+    Vector2.prototype.rotate180 = function () {
+        return this.flip();
     };
     Vector2.prototype.cross = function (v2) {
         var v1 = this;
@@ -149,16 +212,44 @@ var Vector2 = (function () {
         return center;
     };
     /**
-      * Use the 1/2 determinant method to find the area of a triangle.
+      * Returns a new array `[x, y]`.
       */
-    Vector2.areaTriangle = function (p1, p2, p3) {
-        return (p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y);
-    };
     Vector2.prototype.toArray = function () {
         return this._v.slice();
     };
     Vector2.prototype.log = function () {
         console.log(this._v[0], this._v[1]);
+    };
+    /**
+      * Use the 1/2 determinant method to find the area of a triangle.
+      */
+    Vector2.areaTriangle = function (p1, p2, p3) {
+        return (p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y);
+    };
+    /**
+      * Returns the point of intersection between 2 line segments.
+      * Returns `undefined` if no intersection is found.
+      */
+    Vector2.segmentsIntersection = function (p, p2, q, q2) {
+        // TODO: Perhaps check in advance that points don't overlap on the opposite segment.
+        var r = p2.clone().subtract(p);
+        var s = q2.clone().subtract(q);
+        var uNumerator = q.clone().subtract(p).cross(r);
+        var denominator = r.clone().cross(s);
+        if (uNumerator == 0 && denominator == 0) {
+            // They are collinear
+            return;
+        }
+        if (denominator == 0) {
+            // lines are parallel
+            return;
+        }
+        var t = q.clone().subtract(p).cross(s) / denominator;
+        var u = uNumerator / denominator;
+        if ((t >= 0) && (t <= 1) && (u >= 0) && (u <= 1)) {
+            var intersectionPoint = p.clone().add(r.clone().multiply(t));
+            return intersectionPoint;
+        }
     };
     return Vector2;
 }());

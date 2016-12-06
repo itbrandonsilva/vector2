@@ -1,5 +1,5 @@
 /**
-  * *WARNING: All calls that need to modify the host vector will do so **in place***.
+  * *Keep in mind that Vector2 is **not an immutable class**. It is also assumed that your **positive y axis points down***.
   */
 export default class Vector2 {
     private _v: Array<number>;
@@ -35,6 +35,23 @@ export default class Vector2 {
     }
 
     /**
+      * Reverse the X and Y values.
+      */
+    reverse(): Vector2 {
+        this._v.reverse();
+        return this;
+    }
+
+    /**
+      * Equivalent to rotating the vector 180 degrees.
+      */
+    flip(): Vector2 {
+        this._v[0] = -this._v[0];
+        this._v[1] = -this._v[1];
+        return this;
+    }
+
+    /**
       * Create a new vector initialized with the values of this vector.
       */
     clone(): Vector2 {
@@ -63,6 +80,9 @@ export default class Vector2 {
         return this;
     }
 
+    /**
+      * Alias for `subtract()`.
+      */
     sub(vector: Vector2): Vector2 {
         return this.subtract(vector);
     }
@@ -73,10 +93,16 @@ export default class Vector2 {
         return this;
     }
 
+    /**
+      * Alias for `multiply()`.
+      */
     mul(scale: number): Vector2 {
         return this.multiply(scale);
     }
 
+    /**
+      * Alias for `multiply()`.
+      */
     mult(scale: number): Vector2 {
         return this.multiply(scale);
     }
@@ -87,12 +113,22 @@ export default class Vector2 {
         return this;
     }
 
+    /**
+      * Alias for `divide()`.
+      */
     div(scale: number): Vector2 {
         return this.divide(scale);
     }
 
-    isEqual(vector: Vector2): boolean {
+    isEqualTo(vector: Vector2): boolean {
         return (this._v[0] == vector._v[0] && this._v[1] == vector._v[1]);
+    }
+
+    /**
+      * Alias for `isEqualTo()`.
+      */
+    eql(vector: Vector2): boolean {
+        return this.isEqualTo(vector);
     }
 
     setLength(scale: number): Vector2 {
@@ -122,7 +158,7 @@ export default class Vector2 {
     }
 
     /**
-      * Rotate the given vector around the origin [ 0, 0 ].
+      * Rotate the given vector around the origin `[0, 0]`.
       */
     rotate(degrees: number, round?: number): Vector2 {
         round = round || 1;
@@ -140,8 +176,42 @@ export default class Vector2 {
         return this;
     }
 
+    /**
+      * Faster than calling `rotate(90)`.
+      */
+    rotate90(): Vector2 {
+        let ox = this._v[0];
+        this._v[0] = -this._v[1];
+        this._v[1] = ox;
+        return this;
+    }
+
+    /**
+      * Alias to `rotate90`
+      */
+    rotate90C() {
+        return this.rotate90();
+    }
+
+    /**
+      * Same as `rotate90()` but instead rotates counter-clockwise.
+      */
+    rotate90CC() {
+        let ox = this._v[0];
+        this._v[0] = this._v[1];
+        this._v[1] = -ox;
+        return this;
+    }
+
+    /**
+      * Faster than calling `rotate(180)` or `rotate90()` twice.
+      */
+    rotate180(): Vector2 {
+        return this.flip();
+    }
+
     cross(v2: Vector2): number {
-       let v1 = this;
+        let v1 = this;
         return v1.x * v2.y - v1.y * v2.x;
     }
 
@@ -175,17 +245,52 @@ export default class Vector2 {
     }
 
     /**
-      * Use the 1/2 determinant method to find the area of a triangle.
+      * Returns a new array `[x, y]`.
       */
-    static areaTriangle(p1: Vector2, p2: Vector2, p3: Vector2) {
-        return (p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y);
-    }
-
     toArray(): Array<number> {
         return this._v.slice();
     }
 
     log(): void {
         console.log(this._v[0], this._v[1]);
+    }
+
+    /**
+      * Use the 1/2 determinant method to find the area of a triangle.
+      */
+    static areaTriangle(p1: Vector2, p2: Vector2, p3: Vector2) {
+        return (p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y);
+    }
+
+    /**
+      * Returns the point of intersection between 2 line segments.
+      * Returns `undefined` if no intersection is found.
+      */ 
+    static segmentsIntersection(p: Vector2, p2: Vector2, q: Vector2, q2: Vector2): Vector2 {
+        // TODO: Perhaps check in advance that points don't overlap on the opposite segment.
+
+        var r = p2.clone().subtract(p);
+        var s = q2.clone().subtract(q);
+
+        var uNumerator = q.clone().subtract(p).cross(r);
+        var denominator = r.clone().cross(s);
+
+        if (uNumerator == 0 && denominator == 0) {
+            // They are collinear
+            return;
+        }
+
+        if (denominator == 0) {
+            // lines are parallel
+            return;
+        }
+
+        var t = q.clone().subtract(p).cross(s) / denominator;
+        var u = uNumerator / denominator;
+
+        if ( (t >= 0) && (t <= 1) && (u >= 0) && (u <= 1) ) {
+            var intersectionPoint = p.clone().add(r.clone().multiply(t));
+            return intersectionPoint;
+        }
     }
 }

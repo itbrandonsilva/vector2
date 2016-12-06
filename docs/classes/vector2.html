@@ -70,7 +70,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p><em>WARNING: All calls that need to modify the host vector will do so <strong>in place</strong></em>.</p>
+						<p><em>Keep in mind that Vector2 is <strong>not an immutable class</strong>. It is also assumed that your <strong>positive y axis points down</strong></em>.</p>
 					</div>
 				</div>
 			</section>
@@ -118,17 +118,24 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#distance" class="tsd-kind-icon">distance</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#div" class="tsd-kind-icon">div</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#divide" class="tsd-kind-icon">divide</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#eql" class="tsd-kind-icon">eql</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#flip" class="tsd-kind-icon">flip</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#getlength" class="tsd-kind-icon">get<wbr>Length</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#inrect" class="tsd-kind-icon">in<wbr>Rect</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#intriangle" class="tsd-kind-icon">in<wbr>Triangle</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#isequal" class="tsd-kind-icon">is<wbr>Equal</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#isequalto" class="tsd-kind-icon">is<wbr>Equal<wbr>To</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#log" class="tsd-kind-icon">log</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#mul" class="tsd-kind-icon">mul</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#mult" class="tsd-kind-icon">mult</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#multiply" class="tsd-kind-icon">multiply</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#normalize" class="tsd-kind-icon">normalize</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#read" class="tsd-kind-icon">read</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#reverse" class="tsd-kind-icon">reverse</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#rotate" class="tsd-kind-icon">rotate</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#rotate180" class="tsd-kind-icon">rotate180</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#rotate90" class="tsd-kind-icon">rotate90</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#rotate90c" class="tsd-kind-icon">rotate90C</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#rotate90cc" class="tsd-kind-icon">rotate90CC</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#round" class="tsd-kind-icon">round</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#set" class="tsd-kind-icon">set</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#setlength" class="tsd-kind-icon">set<wbr>Length</a></li>
@@ -137,6 +144,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#toarray" class="tsd-kind-icon">to<wbr>Array</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="vector2.html#vectorto" class="tsd-kind-icon">vector<wbr>To</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="vector2.html#areatriangle" class="tsd-kind-icon">area<wbr>Triangle</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="vector2.html#segmentsintersection" class="tsd-kind-icon">segments<wbr>Intersection</a></li>
 							</ul>
 						</section>
 					</div>
@@ -154,7 +162,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L5">Vector2.ts:5</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L5">Vector2.ts:5</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -179,7 +187,7 @@
 					<div class="tsd-signature tsd-kind-icon">_v<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L5">Vector2.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L5">Vector2.ts:5</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -197,7 +205,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L11">Vector2.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L11">Vector2.ts:11</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -205,7 +213,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L19">Vector2.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L19">Vector2.ts:19</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -229,7 +237,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L15">Vector2.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L15">Vector2.ts:15</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -237,7 +245,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L20">Vector2.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L20">Vector2.ts:20</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -263,7 +271,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L44">Vector2.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L61">Vector2.ts:61</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -286,7 +294,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L50">Vector2.ts:50</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L67">Vector2.ts:67</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -309,7 +317,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L55">Vector2.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L72">Vector2.ts:72</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -332,7 +340,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L114">Vector2.ts:114</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L150">Vector2.ts:150</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -349,7 +357,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L171">Vector2.ts:171</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L241">Vector2.ts:241</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -372,7 +380,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L40">Vector2.ts:40</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L57">Vector2.ts:57</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -394,7 +402,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L143">Vector2.ts:143</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L213">Vector2.ts:213</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -417,7 +425,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L110">Vector2.ts:110</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L146">Vector2.ts:146</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -440,9 +448,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L90">Vector2.ts:90</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L119">Vector2.ts:119</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Alias for <code>divide()</code>.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -463,7 +476,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L84">Vector2.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L110">Vector2.ts:110</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -472,6 +485,56 @@
 									<h5>scale: <span class="tsd-signature-type">number</span></h5>
 								</li>
 							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="vector2.html" class="tsd-signature-type">Vector2</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="eql" class="tsd-anchor"></a>
+					<h3>eql</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">eql<span class="tsd-signature-symbol">(</span>vector<span class="tsd-signature-symbol">: </span><a href="vector2.html" class="tsd-signature-type">Vector2</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L130">Vector2.ts:130</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Alias for <code>isEqualTo()</code>.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>vector: <a href="vector2.html" class="tsd-signature-type">Vector2</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="flip" class="tsd-anchor"></a>
+					<h3>flip</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">flip<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="vector2.html" class="tsd-signature-type">Vector2</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L48">Vector2.ts:48</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Equivalent to rotating the vector 180 degrees.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <a href="vector2.html" class="tsd-signature-type">Vector2</a></h4>
 						</li>
 					</ul>
@@ -486,7 +549,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L102">Vector2.ts:102</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L138">Vector2.ts:138</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -503,7 +566,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L156">Vector2.ts:156</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L226">Vector2.ts:226</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -534,7 +597,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L163">Vector2.ts:163</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L233">Vector2.ts:233</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -559,16 +622,16 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="isequal" class="tsd-anchor"></a>
-					<h3>is<wbr>Equal</h3>
+					<a name="isequalto" class="tsd-anchor"></a>
+					<h3>is<wbr>Equal<wbr>To</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Equal<span class="tsd-signature-symbol">(</span>vector<span class="tsd-signature-symbol">: </span><a href="vector2.html" class="tsd-signature-type">Vector2</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Equal<wbr>To<span class="tsd-signature-symbol">(</span>vector<span class="tsd-signature-symbol">: </span><a href="vector2.html" class="tsd-signature-type">Vector2</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L94">Vector2.ts:94</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L123">Vector2.ts:123</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -591,7 +654,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L188">Vector2.ts:188</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L254">Vector2.ts:254</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -608,9 +671,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L76">Vector2.ts:76</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L99">Vector2.ts:99</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Alias for <code>multiply()</code>.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -631,9 +699,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L80">Vector2.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L106">Vector2.ts:106</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Alias for <code>multiply()</code>.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -654,7 +727,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L70">Vector2.ts:70</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L90">Vector2.ts:90</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -677,7 +750,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L106">Vector2.ts:106</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L142">Vector2.ts:142</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="vector2.html" class="tsd-signature-type">Vector2</a></h4>
@@ -694,7 +767,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L31">Vector2.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L31">Vector2.ts:31</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -713,6 +786,28 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="reverse" class="tsd-anchor"></a>
+					<h3>reverse</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">reverse<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="vector2.html" class="tsd-signature-type">Vector2</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L40">Vector2.ts:40</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Reverse the X and Y values.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="vector2.html" class="tsd-signature-type">Vector2</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="rotate" class="tsd-anchor"></a>
 					<h3>rotate</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -722,12 +817,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L127">Vector2.ts:127</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L163">Vector2.ts:163</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Rotate the given vector around the origin [ 0, 0 ].</p>
+									<p>Rotate the given vector around the origin <code>[0, 0]</code>.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -744,6 +839,94 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="rotate180" class="tsd-anchor"></a>
+					<h3>rotate180</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">rotate180<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="vector2.html" class="tsd-signature-type">Vector2</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L209">Vector2.ts:209</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Faster than calling <code>rotate(180)</code> or <code>rotate90()</code> twice.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="vector2.html" class="tsd-signature-type">Vector2</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="rotate90" class="tsd-anchor"></a>
+					<h3>rotate90</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">rotate90<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="vector2.html" class="tsd-signature-type">Vector2</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L182">Vector2.ts:182</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Faster than calling <code>rotate(90)</code>.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="vector2.html" class="tsd-signature-type">Vector2</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="rotate90c" class="tsd-anchor"></a>
+					<h3>rotate90C</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">rotate90C<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="vector2.html" class="tsd-signature-type">Vector2</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L192">Vector2.ts:192</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Alias to <code>rotate90</code></p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="vector2.html" class="tsd-signature-type">Vector2</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="rotate90cc" class="tsd-anchor"></a>
+					<h3>rotate90CC</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">rotate90CC<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L199">Vector2.ts:199</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Same as <code>rotate90()</code> but instead rotates counter-clockwise.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="round" class="tsd-anchor"></a>
 					<h3>round</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -753,7 +936,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L118">Vector2.ts:118</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L154">Vector2.ts:154</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="vector2.html" class="tsd-signature-type">Vector2</a></h4>
@@ -770,7 +953,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L22">Vector2.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L22">Vector2.ts:22</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -796,7 +979,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L98">Vector2.ts:98</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L134">Vector2.ts:134</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -819,9 +1002,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L66">Vector2.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L86">Vector2.ts:86</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Alias for <code>subtract()</code>.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -842,7 +1030,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L60">Vector2.ts:60</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L77">Vector2.ts:77</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -865,9 +1053,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L184">Vector2.ts:184</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L250">Vector2.ts:250</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns a new array <code>[x, y]</code>.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
@@ -882,7 +1075,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L148">Vector2.ts:148</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L218">Vector2.ts:218</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -905,7 +1098,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/d46f625/src/Vector2.ts#L180">Vector2.ts:180</a></li>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L261">Vector2.ts:261</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -926,6 +1119,44 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="segmentsintersection" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> segments<wbr>Intersection</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">segments<wbr>Intersection<span class="tsd-signature-symbol">(</span>p<span class="tsd-signature-symbol">: </span><a href="vector2.html" class="tsd-signature-type">Vector2</a>, p2<span class="tsd-signature-symbol">: </span><a href="vector2.html" class="tsd-signature-type">Vector2</a>, q<span class="tsd-signature-symbol">: </span><a href="vector2.html" class="tsd-signature-type">Vector2</a>, q2<span class="tsd-signature-symbol">: </span><a href="vector2.html" class="tsd-signature-type">Vector2</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="vector2.html" class="tsd-signature-type">Vector2</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/itbrandonsilva/vector2/blob/7ad7fcb/src/Vector2.ts#L269">Vector2.ts:269</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the point of intersection between 2 line segments.
+									Returns <code>undefined</code> if no intersection is found.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>p: <a href="vector2.html" class="tsd-signature-type">Vector2</a></h5>
+								</li>
+								<li>
+									<h5>p2: <a href="vector2.html" class="tsd-signature-type">Vector2</a></h5>
+								</li>
+								<li>
+									<h5>q: <a href="vector2.html" class="tsd-signature-type">Vector2</a></h5>
+								</li>
+								<li>
+									<h5>q2: <a href="vector2.html" class="tsd-signature-type">Vector2</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="vector2.html" class="tsd-signature-type">Vector2</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -989,6 +1220,12 @@
 								<a href="vector2.html#divide" class="tsd-kind-icon">divide</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="vector2.html#eql" class="tsd-kind-icon">eql</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="vector2.html#flip" class="tsd-kind-icon">flip</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="vector2.html#getlength" class="tsd-kind-icon">get<wbr>Length</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
@@ -998,7 +1235,7 @@
 								<a href="vector2.html#intriangle" class="tsd-kind-icon">in<wbr>Triangle</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="vector2.html#isequal" class="tsd-kind-icon">is<wbr>Equal</a>
+								<a href="vector2.html#isequalto" class="tsd-kind-icon">is<wbr>Equal<wbr>To</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="vector2.html#log" class="tsd-kind-icon">log</a>
@@ -1019,7 +1256,22 @@
 								<a href="vector2.html#read" class="tsd-kind-icon">read</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="vector2.html#reverse" class="tsd-kind-icon">reverse</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="vector2.html#rotate" class="tsd-kind-icon">rotate</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="vector2.html#rotate180" class="tsd-kind-icon">rotate180</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="vector2.html#rotate90" class="tsd-kind-icon">rotate90</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="vector2.html#rotate90c" class="tsd-kind-icon">rotate90C</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="vector2.html#rotate90cc" class="tsd-kind-icon">rotate90CC</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="vector2.html#round" class="tsd-kind-icon">round</a>
@@ -1044,6 +1296,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 								<a href="vector2.html#areatriangle" class="tsd-kind-icon">area<wbr>Triangle</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="vector2.html#segmentsintersection" class="tsd-kind-icon">segments<wbr>Intersection</a>
 							</li>
 						</ul>
 					</li>
