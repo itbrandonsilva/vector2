@@ -1,8 +1,8 @@
 "use strict";
-function frac0(f) {
+function _frac0(f) {
     return f % 1;
 }
-function frac1(f) {
+function _frac1(f) {
     return 1 - f + Math.floor(f);
 }
 /**
@@ -272,9 +272,9 @@ var Vector2 = (function () {
         else
             tDeltaX = 10000000;
         if (dx >= 0)
-            tMaxX = tDeltaX * frac1(v1.x);
+            tMaxX = tDeltaX * _frac1(v1.x);
         else
-            tMaxX = tDeltaX * frac0(v1.x);
+            tMaxX = tDeltaX * _frac0(v1.x);
         var tDeltaY, tMaxY;
         var dy = Math.sign(v2.y - v1.y);
         if (dy !== 0)
@@ -282,9 +282,9 @@ var Vector2 = (function () {
         else
             tDeltaY = 10000000;
         if (dy >= 0)
-            tMaxY = tDeltaY * frac1(v1.y);
+            tMaxY = tDeltaY * _frac1(v1.y);
         else
-            tMaxY = tDeltaY * frac0(v1.y);
+            tMaxY = tDeltaY * _frac0(v1.y);
         var destX = Math.floor(v2.x);
         var destY = Math.floor(v2.y);
         var x = v1.x;

@@ -1,8 +1,8 @@
-function frac0(f) {
+function _frac0(f) {
     return f % 1;
 }
 
-function frac1(f) {
+function _frac1(f) {
     return 1 - f + Math.floor(f);
 }
 
@@ -315,15 +315,15 @@ export default class Vector2 {
         let dx = Math.sign(v2.x - v1.x);
         if ( dx !== 0 ) tDeltaX = Math.min(dx / (v2.x - v1.x), 10000000);
         else tDeltaX = 10000000;
-        if ( dx >= 0 ) tMaxX = tDeltaX * frac1(v1.x);
-        else tMaxX = tDeltaX * frac0(v1.x);
+        if ( dx >= 0 ) tMaxX = tDeltaX * _frac1(v1.x);
+        else tMaxX = tDeltaX * _frac0(v1.x);
 
         let tDeltaY, tMaxY;
         let dy = Math.sign(v2.y - v1.y);
         if ( dy !== 0 ) tDeltaY = Math.min(dy / (v2.y - v1.y), 10000000);
         else tDeltaY = 10000000;
-        if ( dy >= 0 ) tMaxY = tDeltaY * frac1(v1.y);
-        else tMaxY = tDeltaY * frac0(v1.y);
+        if ( dy >= 0 ) tMaxY = tDeltaY * _frac1(v1.y);
+        else tMaxY = tDeltaY * _frac0(v1.y);
 
         let destX = Math.floor(v2.x);
         let destY = Math.floor(v2.y);

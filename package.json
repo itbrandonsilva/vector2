@@ -6,7 +6,7 @@
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha",
     "build": "tsc;",
-    "docs": "typedoc --target ES6 --theme ./node_modules/typedoc-default-themes/bin/default --readme none --name \"Vector2 Documentation\" --mode file --out ./docs .; touch ./docs/.nojekyll;",
+    "docs": "typedoc --target ES6 --theme ./node_modules/typedoc-default-themes/bin/default --readme none --name \"Vector2 Documentation\" --excludePrivate --mode file --out ./docs .; touch ./docs/.nojekyll;",
     "all": "yarn && typings install && npm run build && npm run test && npm run docs;"
   },
   "author": "",
