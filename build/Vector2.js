@@ -138,7 +138,7 @@ var Vector2 = (function () {
         return vector.clone().subtract(this).getLength();
     };
     Vector2.prototype.angle = function () {
-        return Math.atan2(this._v[0], this._v[1]) * (180 / Math.PI);
+        return Math.atan(this._v[1] / this._v[0]) * (180 / Math.PI);
     };
     Vector2.prototype.round = function () {
         this._v[0] = Math.round(this._v[0]);
