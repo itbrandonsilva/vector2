@@ -14,6 +14,9 @@ var Vector2 = (function () {
         if (y === void 0) { y = 0; }
         this._v = [x, y];
     }
+    Vector2.from = function (a) {
+        return new Vector2(a[0], a[1]);
+    };
     Object.defineProperty(Vector2.prototype, "x", {
         get: function () {
             return this._v[0];
@@ -115,6 +118,13 @@ var Vector2 = (function () {
       */
     Vector2.prototype.div = function (scale) {
         return this.divide(scale);
+    };
+    /**
+      * Dot product of two vectors.
+      */
+    Vector2.prototype.dot = function (v) {
+        var v1 = this;
+        return v1.x * v.x + v1.y * v.y;
     };
     Vector2.prototype.isEqualTo = function (vector) {
         return (this._v[0] == vector._v[0] && this._v[1] == vector._v[1]);

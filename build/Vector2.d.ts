@@ -4,6 +4,7 @@
 export default class Vector2 {
     private _v;
     constructor(x?: number, y?: number);
+    static from(a: Array<number>): Vector2;
     x: number;
     y: number;
     set(x: number, y: number): Vector2;
@@ -45,6 +46,10 @@ export default class Vector2 {
       * Alias for `divide()`.
       */
     div(scale: number): Vector2;
+    /**
+      * Dot product of two vectors.
+      */
+    dot(v: Vector2): number;
     isEqualTo(vector: Vector2): boolean;
     /**
       * Alias for `isEqualTo()`.

@@ -6,6 +6,16 @@ const expect = chai.expect;
 chai.should();
 
 describe('Vector2', () => {
+    it('can be constructed', () => {
+        let v = new Vector2(1, 2);
+        v.x.should.equal(1);
+        v.y.should.equal(2);
+    });
+    it('can construct from() an array', () => {
+        let v = Vector2.from([1, 2]);
+        v.x.should.equal(1);
+        v.y.should.equal(2);
+    });
     it('can read() from another vector', () => {
         let v1 = new Vector2(1, 1);
         let v2 = new Vector2(2, 3);
@@ -146,5 +156,20 @@ describe('Vector2', () => {
         last = cells.pop();
         last.x.should.equal(2);
         last.y.should.equal(2);
+    });
+
+    it('can calc dot() product', () => {
+        let v1 = new Vector2(5, -5);
+
+        let v2;
+        let dot;
+
+        v2 = new Vector2(2, 0);
+        dot = v1.dot(v2);
+        dot.should.equal(10);
+
+        v2 = new Vector2(1, 0);
+        dot = v1.dot(v2);
+        dot.should.equal(5);
     });
 });

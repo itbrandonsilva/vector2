@@ -16,6 +16,10 @@ export default class Vector2 {
         this._v = [x, y];
     }
 
+    static from(a: Array<number>): Vector2 {
+        return new Vector2(a[0], a[1]);
+    }
+
     get x(): number {
         return this._v[0];
     }
@@ -126,6 +130,14 @@ export default class Vector2 {
       */
     div(scale: number): Vector2 {
         return this.divide(scale);
+    }
+
+    /**
+      * Dot product of two vectors.
+      */
+    dot(v: Vector2): number {
+        let v1 = this;
+        return v1.x * v.x + v1.y * v.y; 
     }
 
     isEqualTo(vector: Vector2): boolean {

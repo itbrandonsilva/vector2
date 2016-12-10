@@ -5,7 +5,7 @@
   "main": "build/Vector2.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha",
-    "build": "tsc;",
+    "build": "tsc",
     "docs": "typedoc --out ./docs .",
     "all": "yarn && typings install && npm run build && npm run test && npm run docs && touch ./docs/.nojekyll"
   },
